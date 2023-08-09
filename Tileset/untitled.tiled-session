@@ -1,0 +1,102 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/map/map.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "": {
+            "scaleInDock": 0.25
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/Assets_objects.tsx": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1,
+            "scaleInEditor": 0.5
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/map/map.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 12,
+            "viewCenter": {
+                "x": 1014.9999999999999,
+                "y": 213.99999999999997
+            }
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_fishmarket_stall.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_marketplace_stall.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_ore_crystals_stall.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_potion_stall.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/house_building_assets.tsx": {
+            "scaleInDock": 0.5,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/housing_system_roofs.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 0.25,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/outside_assets.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/outside_assets_stairs.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1.0383,
+            "scaleInEditor": 1
+        },
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/terrain/Terrain.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.externalTilesetPath": "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects",
+    "last.imagePath": "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/Assets_images",
+    "map.height": 50,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 70,
+    "openFiles": [
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/map/map.tmx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/terrain/Terrain.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/housing_system_roofs.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/Assets_objects.tsx"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/Assets_objects.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/housing_system_roofs.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/terrain/Terrain.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/map/map.tmx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_fishmarket_stall.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_marketplace_stall.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/outside_assets_stairs.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/outside_assets.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/house_building_assets.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_potion_stall.tsx",
+        "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_ore_crystals_stall.tsx"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    },
+    "tileset.type": 1
+}
