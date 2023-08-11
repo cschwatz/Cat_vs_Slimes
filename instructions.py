@@ -1,5 +1,4 @@
 import pygame
-pygame.font.init()
 
 class Instructions:
     def __init__(self, game_state, main_menu):
@@ -20,15 +19,15 @@ class Instructions:
     def display_background(self):
         self.display_screen.blit(self.image, (0,0))
 
-    def display_instructions(self):
+    def display_instructions(self): #displays the image that contains the instructions
         self.display_screen.blit(self.instructions_image, (60,20))
     
-    def display_button(self):
+    def display_button(self): #displays the return button
         self.display_screen.blit(self.button_background_image, (320, 540))
         button_text = self.font.render('RETURN', False, (0,0,0))
         self.display_screen.blit(button_text, (340, 535))
 
-    def input(self):
+    def input(self): #deals with player input
         keys = pygame.key.get_pressed()
         if self.can_interact:
             if keys[pygame.K_SPACE] or keys[pygame.K_ESCAPE]:

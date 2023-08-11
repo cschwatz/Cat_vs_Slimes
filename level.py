@@ -144,7 +144,7 @@ class Level:
         if current_monsters_on_map < win_condition:
             self.has_achieved_objective = True
 
-    def final_objective_coordinate(self):
+    def final_objective_coordinate(self): #gets the image and rect of the blessed statue (final objective of the game)
         statue = self.tmx_data.get_object_by_id(387) #id of the statue in Tiled
         statue_x = int(statue.x * 4)
         statue_y = int(statue.y * 4)
@@ -158,7 +158,7 @@ class Level:
         quest_button_rect.y = statue_y - 60
         return (quest_button_image, quest_button_rect)
 
-    def check_player_distance_from_objective(self):
+    def check_player_distance_from_objective(self): #to handle if player has activated the main objective
         player_vector = pygame.math.Vector2(self.player.rect.center)
         statue = self.tmx_data.get_object_by_id(387)
         objective_rect = pygame.Rect(statue.x * 4, statue.y * 4, 50, 100)
@@ -173,7 +173,7 @@ class Level:
         image.set_colorkey(color) #removes background colour (colour is passed as argument) of the surface -- makes the png have a transparent background so it does not look weird on the game
         return image
 
-    def player_take_damage_logic(self):
+    def player_take_damage_logic(self): #checks when player has collided with slime
         for monster_sprite in self.monster_sprites: 
             sprite_collision = pygame.sprite.spritecollide(monster_sprite, self.player_sprite, False)
             if sprite_collision:
@@ -184,7 +184,7 @@ class Level:
         if self.player.exp >= self.player.exp_threshold[str(self.player.level)]:
             self.has_leveled_up = True
     
-    def level_up_text_animation(self):
+    def level_up_text_animation(self): #animated text that indicates when player levels up
         level_up_text = self.font.render('LEVEL UP!', False, (0,0,0))
         level_up_text_rect = level_up_text.get_rect()
         level_up_text_rect.centerx = self.player.rect.centerx
@@ -240,7 +240,7 @@ class YSortCameraGroup(pygame.sprite.Group): #Class that handles the camera -- I
         new_width = bar_width * ratio
         return new_width
     
-    def draw_level_up_text(self, player, text):
+    def draw_level_up_text(self, player, text): 
         self.center_target_camera(player)
         level_up_text = text[0]
         level_up_text_rect = text[1]

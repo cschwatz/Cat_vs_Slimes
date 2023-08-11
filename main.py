@@ -6,6 +6,8 @@ from gamestate import GameState
 from mainmenu import MainMenu
 from endscreen import EndScreen
 from instructions import Instructions
+pygame.mixer.init()
+pygame.font.init()
 
 class Game:
     def __init__(self):

@@ -1,5 +1,4 @@
 import pygame
-pygame.font.init()
 
 class UI:
     def __init__(self, player, monster_group):
@@ -55,7 +54,7 @@ class UI:
         self.display_surface.blit(player_exp_bar_container, (650, 23, self.ui_elements['UI_bar'].get_width(), self.ui_elements['UI_bar'].get_height())) #draws the 'container' (UI) that the bar will be drawn on
         self.display_surface.blit(exp_text, (650 - exp_text.get_width(), 15, exp_text.get_width(), exp_text.get_height()))
 
-    def display_spell_selection_box(self):
+    def display_spell_selection_box(self): #displays the current selected spell
         spell_selection_box = self.UI_spell_box
         current_spell_text = self.font.render(f'{self.player.current_selected_spell}'.upper(), False, (0,0,0))
         current_spell = self.spell_icons[self.player.current_selected_spell]
@@ -63,7 +62,7 @@ class UI:
         self.display_surface.blit(spell_selection_box, (10, self.display_surface.get_height() - spell_selection_box.get_height(), spell_selection_box.get_width(), spell_selection_box.get_height()))
         self.display_surface.blit(current_spell_text, (30, self.display_surface.get_height() - spell_selection_box.get_height() - 40))
 
-    def display_game_progress(self, current_num_monsters):
+    def display_game_progress(self, current_num_monsters): #displays a progress bar that indicates how many slimes are left
         total_number_of_monsters = self.total_monsters
         #objective is to kill at least 90% of the monsters
         player_current_progress = (total_number_of_monsters) - current_num_monsters #just subtracts the total number of monsters that are created when the level is instantiated and subtract it by the total amount of monster sprites -- if a monster is killed, its sprite is deleted, thus we can check how many are left
@@ -77,7 +76,7 @@ class UI:
         self.display_surface.blit(progress_bar_container_scaled, (300,15, self.ui_elements['UI_bar'].get_width(), self.ui_elements['UI_bar'].get_height()))
         self.display_surface.blit(progress_text, (330, 50, progress_text.get_width(), progress_text.get_height()))
 
-    def display_available_stat_points(self):
+    def display_available_stat_points(self): #shows how many points the player has
         available_points = str(self.player.stats_points)
         available_points_text = self.font_stat_points.render(available_points, False, (255,0,0))
         stat_text = self.font.render('STAT', False, (0,0,0))

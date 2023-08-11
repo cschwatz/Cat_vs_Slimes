@@ -1,5 +1,4 @@
 import pygame
-pygame.font.init()
 
 class LevelUp:
     def __init__(self, player):

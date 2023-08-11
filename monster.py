@@ -1,7 +1,7 @@
 import pygame
 from math import sin
 from settings import *
-pygame.mixer.init()
+
 
 class Monster(pygame.sprite.Sprite):
     def __init__(self, pos, slime, groups, player, obstacle_sprites):
@@ -61,7 +61,7 @@ class Monster(pygame.sprite.Sprite):
 
         return (distance, direction)
 
-    def get_status(self):
+    def get_status(self): #see if monster should be chasing player or idle
         distance = self.get_player_distance_and_direction()[0] #tuple (distance, direction)
         if distance <= self.notice_radius:
             self.status = 'move'
@@ -92,7 +92,7 @@ class Monster(pygame.sprite.Sprite):
         else:
             self.direction = pygame.math.Vector2()
 
-    def damage_player(self):
+    def damage_player(self): #calculates the damage that is dealt to the player
         if self.player.is_vulnerable:
             self.player.health -= self.damage - self.player.stats['defense'] #reduces the monster's damage based on the player's resistance stat
             self.player.is_vulnerable = False
@@ -106,13 +106,13 @@ class Monster(pygame.sprite.Sprite):
             self.hurt_time = pygame.time.get_ticks()
             self.is_vulnerable = False
 
-    def cooldowns(self):
+    def cooldowns(self): #handles i-frames
         current_time = pygame.time.get_ticks()
         if not self.is_vulnerable:
             if current_time - self.hurt_time >= self.invulnerability_duration:
                 self.is_vulnerable = True
 
-    def push_back_after_damage(self):
+    def push_back_after_damage(self): #method that gives the monster a little "knockback" when it takes damage
         if not self.is_vulnerable and self.pushback_time:
             self.direction *= -self.pushback
             self.hitbox.x += self.direction.x
@@ -122,6 +122,7 @@ class Monster(pygame.sprite.Sprite):
 
     def check_death(self):
         if self.health <= 0:
+            self.frame_index = 0
             self.is_alive = False
             self.give_player_exp()
             self.death_sound.play()
@@ -129,7 +130,7 @@ class Monster(pygame.sprite.Sprite):
     def give_player_exp(self):
         self.player.exp += self.exp
 
-    def collision(self, direction):
+    def collision(self, direction): #checks collision with map assets/objects
         if direction == 'horizontal':
             for sprite in self.obstacle_sprites:
                 if sprite.hitbox.colliderect(self.hitbox):
@@ -185,7 +186,8 @@ class Monster(pygame.sprite.Sprite):
         self.image = self.animations[self.slime]['death'][int(self.frame_index)]
         self.rect = self.image.get_rect(bottomleft = self.hitbox.center)
 
-    def play_slime_moving_sound(self):
+    def play_slime_moving_sound(self): #it is a repeating sound, so we use a helper method
+        
         self.slime_move_sound_cooldown -= 1
         if self.slime_move_sound_cooldown <= 0:
             self.slime_move_sound_cooldown = 50

@@ -1,6 +1,5 @@
 import pygame
 import sys
-pygame.font.init()
 
 class MainMenu:
     def __init__(self, game_state):
@@ -32,11 +31,11 @@ class MainMenu:
         self.select_item_sound = pygame.mixer.Sound('sounds/select_sound.wav')
         self.move_cursor_sound = pygame.mixer.Sound('sounds/hover_item.wav')
 
-    def create_buttons(self):
+    def create_buttons(self): #create button objects
         for _ in self.options:
             self.button_list.append(Button(self.game_state))
 
-    def input(self):
+    def input(self): #handle player input
         keys = pygame.key.get_pressed()
         if self.can_interact:
             if self.can_move_cursor:
@@ -61,7 +60,7 @@ class MainMenu:
                     self.button_list[self.index].trigger_button(current_selected_option)
                     self.select_item_sound.play()
 
-    def cooldown(self):
+    def cooldown(self): #provide some delay for the player's input
         current_time = pygame.time.get_ticks()
         if not self.can_move_cursor:
             if current_time - self.cursor_moved_time >= self.move_cursor_cooldown:
@@ -73,7 +72,7 @@ class MainMenu:
             if self.can_interact_time <= 0:
                 self.can_interact = True
 
-    def display_buttons(self):
+    def display_buttons(self): #blits buttons
         button_x_pos = 280
         button_y_pos = 230
         for index, button in enumerate(self.button_list):
@@ -83,7 +82,7 @@ class MainMenu:
             button.display_text(self.options[index].upper())
             button_y_pos += 120
 
-    def get_slime_y_position(self):
+    def get_slime_y_position(self): #returns the y_pos that the slime must be
         starting_y_pos = 230
         y_pos = starting_y_pos + (120 * self.index)        
         return y_pos
@@ -99,7 +98,7 @@ class MainMenu:
     def display_background_image(self):
         self.display_screen.blit(self.image, (0,0))
 
-    def display_title_image(self):
+    def display_title_image(self): #blits the title
         self.display_screen.blit(self.title_image_scaled, (50, 0))
         text = self.font.render('Created by github.com/cschwatz', False, (0,0,0))
         self.display_screen.blit(text, (420, 560))
@@ -115,7 +114,7 @@ class MainMenu:
         image.set_colorkey(color) #removes background colour (colour is passed as argument) of the surface -- makes the png have a transparent background so it does not look weird on the game
         return image
 
-    def reset_interaction_timer(self):
+    def reset_interaction_timer(self): #method that is used when player goes from menu to instructions (gives a delay before can interact again)
         self.can_interact = False
         self.can_interact_time = 100
 
@@ -136,19 +135,19 @@ class Button:
         self.font = pygame.font.Font('font/BitPotionExt.ttf', 64)
         self.game_state = game_state
     
-    def display_button(self, x, y):
+    def display_button(self, x, y): #blit button image
         self.rect.x = x
         self.rect.y = y
         self.display_screen.blit(self.button_background_image, (x, y))
 
-    def display_text(self, text):
+    def display_text(self, text): #blit button text
         start_text = self.font.render(text, False, (0,0,0))
         text_rect = start_text.get_rect()
         text_rect.centerx = self.rect.centerx
         text_rect.centery = self.rect.centery - 3
         self.display_screen.blit(start_text, (text_rect.x, text_rect.y))
 
-    def trigger_button(self, state):
+    def trigger_button(self, state): #if player has interacted with the button
         if state == 'start game':
             self.game_state.change_game_state('running')
         elif state == 'instructions':

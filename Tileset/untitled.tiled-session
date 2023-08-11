@@ -16,11 +16,11 @@
             "scaleInEditor": 0.5
         },
         "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/map/map.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 12,
+            "scale": 4,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1014.9999999999999,
-                "y": 213.99999999999997
+                "x": 912.5,
+                "y": 778.5
             }
         },
         "/home/cschwatz/Desktop/Programming/CS50_final_project/tileset/objects/commerce_fishmarket_stall.tsx": {

@@ -1,7 +1,6 @@
 import pygame
 from math import sin
 from settings import *
-pygame.mixer.init()
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, group, obstacle_sprites, create_magic):
@@ -43,7 +42,7 @@ class Player(pygame.sprite.Sprite):
         self.stats = {'health': 100, 'mana': 100, 'magic': 10, 'speed': 5, 'defense': 5} #initial stats
         self.max_stats = {'health': 300, 'mana': 200, 'magic': 50, 'speed': 10, 'defense': 10} #ceiling of how much a stat can be increased by leveling up
         self.health = self.stats['health'] #current health
-        self.mana = self.stats['mana'] #current mana
+        self.mana = 0 #current mana
         self.mana_regen = self.stats['magic'] * 0.03
         self.exp = 0 #current exp
         self.exp_threshold = {'1': 30, '2':50, '3': 70, '4': 100, '5': 150, '6': 200, '7': 250, '8': 350} #exp needed to increase the lvl
@@ -51,14 +50,13 @@ class Player(pygame.sprite.Sprite):
         self.stats_points = 0 #stats points earned when leveling up
         #sounds
         self.player_levelup_sound = pygame.mixer.Sound('sounds/level_up.wav')
-        self.player_walk_sound = pygame.mixer.Sound('sounds/step.wav')
         self.change_spell_sound = pygame.mixer.Sound('sounds/select_sound.wav')
         self.change_spell_sound.set_volume(0.3)
-        self.walk_sound_cooldown = 12
 
-    def input(self):
+    def input(self): #handles player input
         keys = pygame.key.get_pressed()
         if not self.attacking:
+            #movement
             if keys[pygame.K_UP]:
                 self.direction.y = -1
                 self.status = 'up_run'
@@ -76,6 +74,7 @@ class Player(pygame.sprite.Sprite):
             else:
                 self.direction.x = 0
 
+            #spell cycling
             if self.can_change_spell:
                 if keys[pygame.K_LCTRL]:
                     self.can_change_spell = False
@@ -84,6 +83,7 @@ class Player(pygame.sprite.Sprite):
                     self.change_spell_sound.play()
 
         if self.can_attack:
+            #casting spells
             if keys[pygame.K_SPACE]:
                 if self.has_enough_mana(self.current_selected_spell):
                     self.direction = pygame.math.Vector2()
@@ -141,12 +141,6 @@ class Player(pygame.sprite.Sprite):
         self.hitbox.y += self.direction.y * velocity
         self.collision('vertical')
         self.rect.center = self.hitbox.center
-
-    def play_walking_sound(self):
-        self.walk_sound_cooldown -= 1
-        if self.walk_sound_cooldown <= 0:
-            self.walk_sound_cooldown = 15    
-            self.player_walk_sound.play()
 
     def collision(self, direction): #method that handles player collision with objects on the screen
         if direction == 'horizontal':
@@ -252,7 +246,4 @@ class Player(pygame.sprite.Sprite):
         self.mana_regeneration()
         self.increase_level()
         self.player_death()
-        # if 'run' in self.status:
-        #     self.play_walking_sound()
-
         

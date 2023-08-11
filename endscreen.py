@@ -32,10 +32,10 @@ class EndScreen:
         self.select_item_sound = pygame.mixer.Sound('sounds/select_sound.wav')
         self.move_cursor_sound = pygame.mixer.Sound('sounds/hover_item.wav')
 
-    def display_background(self):
+    def display_background(self): #displays background image
         self.display_screen.blit(self.background_image, (0,0))
 
-    def input(self):
+    def input(self): #deals with player input
         keys = pygame.key.get_pressed()
         if self.can_interact:
             if self.can_move_cursor:
@@ -66,17 +66,17 @@ class EndScreen:
             if self.can_interact_time <= 0:
                 self.can_interact = True
 
-    def cooldown(self):
+    def cooldown(self): #creates a delay between inputs
         current_time = pygame.time.get_ticks()
         if not self.can_move_cursor:
             if current_time - self.cursor_moved_time >= self.move_cursor_cooldown:
                 self.can_move_cursor = True
 
-    def create_buttons(self):
+    def create_buttons(self): #create button objects
         for _ in self.options:
             self.button_list.append(Button(self.game_state))
 
-    def get_slime_y_position(self):
+    def get_slime_y_position(self): #returns a y_position to blit slime onto the screen
         starting_y_pos = 350
         y_pos = starting_y_pos + (120 * self.index)        
         return y_pos
@@ -100,7 +100,7 @@ class EndScreen:
         for frame in self.animation_frames:
             self.animations.append(self.load_sprite('sprites/monsters/green_front.png', frame, 6, (255,255,255)))
 
-    def display_buttons(self):
+    def display_buttons(self): #display the button objects
         button_x_pos = 280
         button_y_pos = 350
         for index, button in enumerate(self.button_list):
@@ -110,12 +110,12 @@ class EndScreen:
             button.display_text(self.options[index].upper())
             button_y_pos += 120
 
-    def display_win_screen(self):
+    def display_win_screen(self): #if player has won
         self.display_screen.blit(self.win_banner_image, (115, 170))
         final_text = self.font.render('THANKS FOR PLAYING. THIS WAS CS50!', False, (0,0,0))
         self.display_screen.blit(final_text, (100, 270))
 
-    def display_lose_screen(self):
+    def display_lose_screen(self): #if player lost
         self.display_screen.blit(self.lose_banner_image, (200,170))
 
     def update(self):
@@ -139,19 +139,19 @@ class Button:
         self.font = self.font = pygame.font.Font('font/BitPotionExt.ttf', 64)
         self.game_state = game_state
     
-    def display_button(self, x, y):
+    def display_button(self, x, y): #blit the button image
         self.rect.x = x
         self.rect.y = y
         self.display_screen.blit(self.button_background_image, (x, y))
 
-    def display_text(self, text):
+    def display_text(self, text): #blit button text
         start_text = self.font.render(text, False, (0,0,0))
         text_rect = start_text.get_rect()
         text_rect.centerx = self.rect.centerx
         text_rect.centery = self.rect.centery - 3
         self.display_screen.blit(start_text, (text_rect.x, text_rect.y))
 
-    def trigger_button(self, state):
+    def trigger_button(self, state): #if button has been "clicked"
         if state == 'new game':
             self.game_state.change_game_state('new game')
         else:
