@@ -22,6 +22,7 @@ you have to take our feline hero to the "blessed statue", which will purify the 
 ![Wind spell](/screenshots_gifs/wind_spell.gif)
 - Sound effects to increase player experience.
 - Game provides a level up mechanic, in which the player receives stat points when it level's up and can increase the hero's attributes.
+
 ![Leveling](/screenshots_gifs/levelup.gif)
 - Interactive menu, endscreen and a instructions screen, which create a more positive overall experience.
 - Responsive GUI that shows the player's main attributes, such as HP, MP and Experience.
@@ -80,9 +81,7 @@ Although the game fulfills the objective of Harvard's CS50 final project, some q
 - **improved collision**: Since rectangular hitboxes were used in this project, collision might fell wonky/unfair sometimes. Thus, switching the collision mechanic
 to be handled by pygame masks would probably result in a better experience.
 - **Sounds**: Sounds seem a little wonky, as in, sometimes they are played correctly and sometimes they are not.
-- **Optimization**: The code could be  optimized in many ways. One particular way is to reduce repetition of methods, such as the method ```load_sprite``` which
-returns a subsurface to act as a frame of animation. This method is used by many files in the project, which could have been implemented in a single support file
-and imported to the others.
+- **Optimization**: The code could be  optimized in many ways. One particular way is to reduce repetition of methods, such as the method ```load_sprite``` which returns a subsurface to act as a frame of an animation. This method is used by many files in the project, which could have been implemented in a single support file and imported to the others.
 
 ## Credits
 
