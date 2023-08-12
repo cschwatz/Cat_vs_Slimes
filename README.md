@@ -116,7 +116,7 @@ List of assets taken:
       - (https://joebrogers.itch.io/bitpotion)
   - **Menu backgrounds**:
       - (https://caniaeast.itch.io/simple-sky-pixel-backgrounds)
-      - 
+    
 ## License
 
 This project is published under the Creative Commons Zero (CC0) license. However, it is important to point out that each asset/sprite/sound used in this project
